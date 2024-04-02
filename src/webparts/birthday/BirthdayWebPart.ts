@@ -7,13 +7,14 @@ import {
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
-
+import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
 import * as strings from 'BirthdayWebPartStrings';
 import Birthday from './components/Birthday';
 import { IBirthdayProps } from './components/IBirthdayProps';
 
 export interface IBirthdayWebPartProps {
   description: string;
+  list: string;
 }
 
 export default class BirthdayWebPart extends BaseClientSideWebPart<IBirthdayWebPartProps> {
@@ -25,6 +26,8 @@ export default class BirthdayWebPart extends BaseClientSideWebPart<IBirthdayWebP
     const element: React.ReactElement<IBirthdayProps> = React.createElement(
       Birthday,
       {
+        context: this.context,
+        listGuid:this.properties.list,
         description: this.properties.description,
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
@@ -110,6 +113,19 @@ export default class BirthdayWebPart extends BaseClientSideWebPart<IBirthdayWebP
               groupFields: [
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
+                }),
+                PropertyFieldListPicker('list', {
+                  label: 'Select a list',
+                  selectedList: this.properties.list,
+                  includeHidden: false,
+                  orderBy: PropertyFieldListPickerOrderBy.Title,
+                  disabled: false,
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  context: this.context,
+                  onGetErrorMessage: undefined,
+                  deferredValidationTime: 0,
+                  key: 'listPickerFieldId'
                 })
               ]
             }

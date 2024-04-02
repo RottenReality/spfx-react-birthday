@@ -13,6 +13,7 @@
   },
   "externals": {},
   "localizedResources": {
-    "BirthdayWebPartStrings": "lib/webparts/birthday/loc/{locale}.js"
+    "BirthdayWebPartStrings": "lib/webparts/birthday/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
   }
 }

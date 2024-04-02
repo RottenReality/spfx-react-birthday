@@ -6,7 +6,7 @@ import type { IBirthdayProps } from './IBirthdayProps';
 const Birthday: React.FC<IBirthdayProps> =(props)=> {
 
     return (
-      <p>hi</p>
+      <p className={styles.mainText}>hi</p>
     );
 }
 
