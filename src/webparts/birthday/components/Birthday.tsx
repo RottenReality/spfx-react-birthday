@@ -25,7 +25,7 @@ export interface IFormattedItem {
   }
 }
 
-const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Diciembre"]
+const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "noviembre", "Diciembre"]
 
 const Birthday: React.FC<IBirthdayProps> =(props)=> {
   const [elements, setElements] = useState<IFormattedItem[]>([]);
@@ -34,6 +34,7 @@ const Birthday: React.FC<IBirthdayProps> =(props)=> {
     try {
         const today = new Date();
         const currentMonth = today.getMonth() + 1;
+        console.log("test: ", currentMonth)
   
         const formattedUsers: IFormattedItem[] = users.map((user) => {
           const formattedMonthNumber:number = parseInt(user.Date.slice(5, 7))
