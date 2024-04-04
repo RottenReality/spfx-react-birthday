@@ -77,7 +77,15 @@ const Birthday: React.FC<IBirthdayProps> =(props)=> {
   }, [props]);
 
   return (
-    <p className={styles.mainText}>hi</p>
+    <section>
+      {elements.map((item) => (
+        <div key={item.ID}>
+          <h2 className={styles.mainText}>{item.User.Title}</h2>
+          <p>{item.MonthName}</p>
+          <p>{item.Day}</p>
+        </div>
+      ))}
+    </section>
   );
 }
 
