@@ -25,7 +25,56 @@ export interface IFormattedItem {
   }
 }
 
+const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Diciembre"]
+
 const Birthday: React.FC<IBirthdayProps> =(props)=> {
+  const [elements, setElements] = useState<IFormattedItem[]>([]);
+
+  const filterElements = async (users: IFormattedItem[]): Promise<void> => {
+    try {
+        const today = new Date();
+        const currentMonth = today.getMonth() + 1;
+  
+        const formattedUsers: IFormattedItem[] = users.map((user) => {
+          const formattedMonthNumber:number = parseInt(user.Date.slice(5, 7))
+          const formattedDayNumber:number = parseInt(user.Date.slice(8, 10))
+          const formattedMonthName:string = monthNames[formattedMonthNumber - 1]
+          return { ...user, MonthNumber: formattedMonthNumber, Day:formattedDayNumber, MonthName: formattedMonthName};
+        });
+        
+  
+      if (currentMonth === 12) {
+        const happyUsers:IFormattedItem[] = formattedUsers.filter(user => user.MonthNumber === currentMonth || user.MonthNumber === 1)
+        setElements(happyUsers)
+      } else {
+        const happyUsers:IFormattedItem[] = formattedUsers.filter(user => user.MonthNumber === currentMonth || user.MonthNumber === currentMonth+1)
+        setElements(happyUsers)
+      }
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getElements = async (context: WebPartContext): Promise<void> => {
+    try {
+      const sp = spfi().using(SPFx(context));
+      const items: IFormattedItem[] = await sp.web.lists.getById(props.listGuid).items.select("Date", "User/EMail", "User/Name", "User/Title", "User/ID").expand("User")();
+      filterElements(items).catch(error=>console.log(error))
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+  useEffect(() => {
+    if(props.listGuid && props.listGuid !== ''){
+      getElements(props.context)
+      .catch((error) => {
+        console.log(error);
+      });
+    }
+  }, [props]);
 
   return (
     <p className={styles.mainText}>hi</p>
