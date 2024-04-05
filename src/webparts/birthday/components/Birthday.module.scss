@@ -5,6 +5,7 @@
   padding: 1em;
   color: "[theme:bodyText, default: #323130]";
   color: var(--bodyText);
+
   &.teams {
     font-family: $ms-font-family-fallbacks;
   }
@@ -33,6 +34,88 @@
   }
 }
 
-.mainText{
-  color: red;
+.mainText {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.title {
+  font-size: 30px;
+  margin: 10px 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+.month {
+  font-size: 25px;
+  font-weight: 500;
+
+}
+
+.table {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  height: 220px;
+  background: #ED145B;
+  color: white !important;
+}
+
+.image {
+  height: 220px;
+}
+
+.birthday-list-container {
+  overflow-y: scroll;
+  height: 9em;
+  padding-right: 1em;
+
+}
+
+.birthday-list-container::-webkit-scrollbar {
+  width: 2px;
+  background: transparent; // manage scrollbar background color here
+}
+
+
+
+.birthday-list-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3) !important; // manage scrollbar thumb background color here
+}
+
+
+.day-container {
+  margin: 0.5em 0;
+}
+
+.day {
+  font-weight: bold;
+  color: white;
+  border-radius: 100%;
+  display: inline-block;
+  text-align: center;
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  vertical-align: bottom;
+}
+
+.day-background-1 {
+  background-color: blueviolet;
+}
+
+.day-background-2 {
+  background-color: green;
+}
+
+.day-background-3 {
+  background-color: #27AAE1;
+}
+
+.day-background-4 {
+  background-color: chartreuse;
 }
