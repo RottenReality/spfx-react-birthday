@@ -8,4 +8,5 @@ export interface IBirthdayProps {
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
+  onConfigure: () => void;
 }

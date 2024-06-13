@@ -3,7 +3,6 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
-  PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -33,6 +32,9 @@ export default class BirthdayWebPart extends BaseClientSideWebPart<IBirthdayWebP
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName
+        ,onConfigure: () => {
+          this.context.propertyPane.open();
+        }
       }
     );
 
@@ -111,9 +113,6 @@ export default class BirthdayWebPart extends BaseClientSideWebPart<IBirthdayWebP
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                }),
                 PropertyFieldListPicker('list', {
                   label: 'Select a list',
                   selectedList: this.properties.list,
