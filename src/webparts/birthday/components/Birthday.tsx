@@ -26,9 +26,9 @@ export interface IFormattedItem {
 }
 
 const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
-const colors = [styles['day-background-1'], styles['day-background-2'], styles['day-background-3'], styles['day-background-4']]
+const colors = [styles.dayBackground1, styles.dayBackground2, styles.dayBackground3, styles.dayBackground4]
 const currentMonth = new Date().getMonth() + 1;
-var listValid = false;
+let listValid = false;
 const Birthday: React.FC<IBirthdayProps> = (props) => {
   const [elements, setElements] = useState<IFormattedItem[]>([]);
   const sectionRef = React.useRef<HTMLElement>(null);
@@ -99,31 +99,31 @@ const Birthday: React.FC<IBirthdayProps> = (props) => {
       }
       {listValid &&
         <section ref={sectionRef}>
-          <div className={`${styles['table']} ${styles['container']}`}>
+          <div className={`${styles.table} ${styles.container}`}>
             <div>
-              <img className={`${styles['image']}`} src={require('../assets/images/cumpleizq.png')} alt="" />
+              <img className={`${styles.image}`} src={require('../assets/images/cumpleizq.png')} alt="" />
             </div>
             <div style={{ width: '52%' }}>
-              <h2 className={`${styles['title']} ${width && width <= 600 ? styles['title-small'] : ''}`}> CUMPLEAÑOS DEL MES</h2>
+              <h2 className={`${styles.title} ${width && width <= 600 ? styles.titleSmall : ''}`}> CUMPLEAÑOS DEL MES</h2>
 
-              <div className={`${styles['table']}`}>
+              <div className={`${styles.table}`}>
                 <div>
-                  <span className={`${styles['month']}  ${width && width <= 600 ? styles['month-small'] : ''}`}> {monthNames[currentMonth - 1]}:</span>
-                  <div className={`${styles['birthday-list-container']}`}>
+                  <span className={`${styles.month}  ${width && width <= 600 ? styles.monthSmall : ''}`}> {monthNames[currentMonth - 1]}:</span>
+                  <div className={`${styles.birthdayListContainer}`}>
                     {elements.filter(item => item.MonthNumber == currentMonth).map((item) => (
-                      <div className={`${styles['day-container']}`} key={item.ID}>
-                        <span className={`${styles['day']} ${colors[item.Day % 4]}`}>{item.Day} </span>  <span className={`${styles['mainText']}  ${width && width <= 600 ? styles['mainText-small'] : ''}`}>{item.User.Title}</span>
+                      <div className={`${styles.dayContainer}`} key={item.ID}>
+                        <span className={`${styles.day} ${colors[item.Day % 4]}`}>{item.Day} </span>  <span className={`${styles.mainText}  ${width && width <= 600 ? styles.mainTextSmall : ''}`}>{item.User.Title}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <span className={`${styles['month']}  ${width && width <= 600 ? styles['month-small'] : ''}`}> {monthNames[currentMonth]}:</span>
-                  <div className={`${styles['birthday-list-container']}`}>
+                  <span className={`${styles.month}  ${width && width <= 600 ? styles.monthSmall : ''}`}> {monthNames[currentMonth]}:</span>
+                  <div className={`${styles.birthdayListContainer}`}>
                     {elements.filter(item => item.MonthNumber == currentMonth + 1).map((item) => (
-                      <div className={`${styles['day-container']} `} key={item.ID}>
-                        <span className={`${styles['day']} ${colors[item.Day % 4]}`}>{item.Day} </span>  <span className={`${styles['mainText']}  ${width && width <= 600 ? styles['mainText-small'] : ''}`}>{item.User.Title}</span>
+                      <div className={`${styles.dayContainer} `} key={item.ID}>
+                        <span className={`${styles.day} ${colors[item.Day % 4]}`}>{item.Day} </span>  <span className={`${styles.mainText}  ${width && width <= 600 ? styles.mainTextSmall : ''}`}>{item.User.Title}</span>
                       </div>
 
                     ))}
@@ -134,7 +134,7 @@ const Birthday: React.FC<IBirthdayProps> = (props) => {
             </div>
 
             <div>
-              <img className={`${styles['image']}`} src={require('../assets/images/cumpleder.png')} alt="" />
+              <img className={`${styles.image}`} src={require('../assets/images/cumpleder.png')} alt="" />
             </div>
           </div>
         </section>

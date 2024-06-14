@@ -39,7 +39,7 @@
   font-weight: 400;
 }
 
-.mainText-small {
+.mainTextSmall {
   font-size: 10px !important;
 }
 
@@ -50,7 +50,7 @@
   font-weight: 500;
 }
 
-.title-small {
+.titleSmall {
   font-size: 20px !important;
 }
 
@@ -61,7 +61,7 @@
 }
 
 
-.month-small {
+.monthSmall {
   font-size: 16px !important;
 }
 
@@ -81,28 +81,28 @@
   height: 220px;
 }
 
-.birthday-list-container {
+.birthdayListContainer {
   overflow-y: scroll;
   height: 9em;
   padding-right: 1em;
 
 }
 
-.birthday-list-container::-webkit-scrollbar {
+.birthdayListContainer::-webkit-scrollbar {
   width: 2px;
   background: transparent; // manage scrollbar background color here
 }
 
 
 
-.birthday-list-container::-webkit-scrollbar-thumb {
+.birthdayListContainer::-webkit-scrollbar-thumb {
   border-radius: 10px;
   height: 2px;
   background: rgba(255, 255, 255, 0.3) !important; // manage scrollbar thumb background color here
 }
 
 
-.day-container {
+.dayContainer {
   margin: 0.5em 0;
 }
 
@@ -118,18 +118,18 @@
   vertical-align: bottom;
 }
 
-.day-background-1 {
+.dayBackground1 {
   background-color: blueviolet;
 }
 
-.day-background-2 {
+.dayBackground2 {
   background-color: green;
 }
 
-.day-background-3 {
+.dayBackground3 {
   background-color: #27AAE1;
 }
 
-.day-background-4 {
+.dayBackground4 {
   background-color: chartreuse;
 }
